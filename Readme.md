@@ -38,8 +38,12 @@ This will create another directory named `images`.
 This will give two outputs one is the image data `satellite_centers.pkl` contain center points to be sampled. 
 The second thing it contains is satellite center to ground images mapping `image_data.pkl`. If you can get these two pickle piles you can go to the next step of downloading naip images.
 
-### Use `naip_downloader.py` as to download NAIP images from the location. 
+### Use `naip_downloader.py` to download NAIP images from the location. 
 
 If using earth engine you first need to create and earthengine project and authorize it. The best way to do it is using `authorization.ipynb`.
 
 If using some other source of satellite you will have to modify this script for satellite images.
+
+### Use `create_train_test_split.py` to create a non-intersecting train test split. 
+
+This will create a many-to-one train-test splits useful for training GRAFT and other models.
