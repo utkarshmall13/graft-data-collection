@@ -111,7 +111,7 @@ for sind, satfile in enumerate(allsatfiles):
         validgimids = validgimids[:25]
     for validgimid in validgimids:
         validgimid = str(validgimid)
-        fulldata.append(['/'.join(satfile.split('/')[-2:]), join(validgimid[-4], validgimid[-3], validgimid[-2], validgimid[-1], validgimid+'.jpg')])
+        fulldata.append(['/'.join(satfile.split('/')[-3:]), join(validgimid[-4], validgimid[-3], validgimid[-2], validgimid[-1], validgimid+'.jpg')])
     if sind%10000==9999:
         print(sind, len(fulldata))
 #############################################################################
@@ -219,7 +219,7 @@ imgnames = [row[1] for row in alldata if row[0]==satname]
 offsets = [row[-2:] for row in alldata if row[0]==satname]
 
 plt.figure(figsize=(20, 20))
-sat = Image.open(join(satdir, satname)).convert('RGB')
+sat = Image.open(join('/'.join(satdir.split('/')[:-1]), satname)).convert('RGB')
 plt.imshow(sat, extent=(0, sat.size[1], 0, sat.size[0]))
 for imgname, offset in zip(imgnames, offsets):
     img = Image.open(join(imgdir, imgname)).convert('RGB')
